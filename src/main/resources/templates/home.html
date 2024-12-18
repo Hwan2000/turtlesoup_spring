@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}"> <!-- 스타일 파일 연결 -->
+</head>
+<body>
+    <h1>Home screen</h1>
+
+    <div th:if="${isAuthenticated}">
+        <p>You have successfully logged in! Welcome, <span th:text="${username}">Username</span>!</p>
+    </div>
+
+    <div th:unless="${isAuthenticated}">
+        <p>Please <a th:href="@{/login}">log in</a> to access your account.</p>
+    </div>
+
+</body>
+</html>
