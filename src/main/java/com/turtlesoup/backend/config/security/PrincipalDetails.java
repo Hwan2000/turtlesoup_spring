@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.UUID;
 
 @Data
 public class PrincipalDetails implements UserDetails, OAuth2User {
@@ -25,13 +26,12 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
         this.attributes = attributes;
     };
 
-    /**
-     * @return user UUID String -> UUID.fromString()으로 바꿔서 사용
-     */
     @Override
     public String getName() {
-        return userEntity.getId().toString();
+        return userEntity.getName();
     }
+
+    public UUID getUserId() {return userEntity.getId();}
 
     @Override
     public <A> A getAttribute(String name) {
