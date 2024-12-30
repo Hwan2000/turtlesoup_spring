@@ -13,6 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 public class UserEntity extends BaseEntity{
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>problemCreate</title>
+    <link rel="stylesheet" th:href="@{/css/problem/create.css}">
+</head>
+<body>
+
+<form th:action="@{/problem/create}" th:object="${ProblemCreateReq}" method="post">
+    <div>
+        <label for="title">제목</label>
+        <input type="text" id="title" th:field="*{title}" placeholder="문제의 제목을 입력해 주세요" required />
+    </div>
+    <div>
+        <label for="scenario">시나리오</label>
+        <textarea id="scenario" th:field="*{scenario}" placeholder="어떤 내용인가요?" required></textarea>
+    </div>
+    <button type="submit">생성</button>
+</form>
+
+</body>
+</html>

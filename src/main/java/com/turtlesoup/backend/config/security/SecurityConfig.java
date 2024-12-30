@@ -4,6 +4,7 @@ import com.turtlesoup.backend.service.impl.OAuth2UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.*;
@@ -29,6 +30,9 @@ public class SecurityConfig{
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/home", "/login", "/oauth2/**", "/css/**", "/js/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/problem").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/problem/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/problem/create").permitAll()
                         .anyRequest().authenticated() //일단 잠금
                 )
                 .logout((logout) -> logout.logoutSuccessUrl("/"))
